@@ -28,6 +28,8 @@
          05 ONE-DIE PIC 9.
          05 DICE-COMPARISON PIC 9.
            88 ROLLED-GREATER VALUE 1.
+         05 DECISION-SEE PIC 9.
+           88 WANT-TO-SEE VALUE 1.
        LINKAGE SECTION.
        01 BOT-PARAMETERS.
         COPY DATA.
@@ -58,6 +60,7 @@
 
        HANDLE-ROLLED SECTION.
           PERFORM PARSE-SERVER-MESSAGE-ROLLED
+          PERFORM DecideAnnounce
           STRING "ANNOUNCE;" DELIMITED BY SIZE
                  ROLLED-DICE       DELIMITED BY SIZE
                  ";"         DELIMITED BY SIZE
@@ -179,5 +182,17 @@
            END-IF
            EXIT.
 
+       DecideSee SECTION.
+           INITIALIZE DECISION-SEE
+           
+           SET DICE-1 IN ROLLED-DICE TO 6
+           SET DICE-2 IN ROLLED-DICE TO 6
+
+           Perform CompareDice
+
+           IF NOT ROLLED-GREATER
+               SET WANT-TO-SEE TO TRUE
+           END-IF
+           EXIT.
 
        END PROGRAM MUFFINBO.
