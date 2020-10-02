@@ -120,9 +120,9 @@
 
        SortDice SECTION.
            IF DICE-1 IN DICE-VALUE < DICE-2 IN DICE-VALUE
-               MOVE DICE-1 TO ONE-DIE
-               MOVE DICE-2 TO DICE-1
-               MOVE ONE-DIE TO DICE-2
+               MOVE DICE-1 IN DICE-VALUE  TO ONE-DIE
+               MOVE DICE-2 IN DICE-VALUE  TO DICE-1 IN DICE-VALUE 
+               MOVE ONE-DIE TO DICE-2 IN DICE-VALUE 
            END-IF
            EXIT.
 
