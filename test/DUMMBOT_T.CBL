@@ -15,37 +15,37 @@
                PERFORM SortDice
            EXPECT DICE-VALUE TO BE "4 1"
 
-           TESTCASE 'Is rolled dice greater than announced dice'
+           TESTCASE 'Is rolled greater than announced (both numbers)'
                MOVE "2 4" TO ANNOUNCED-DICE
                MOVE "5 3" TO ROLLED-DICE
                PERFORM CompareDice
            EXPECT DICE-COMPARISON TO BE 1
 
-           TESTCASE 'Is rolled dice greater than announced dice'
+           TESTCASE 'Is rolled greater than announced (r=pair)'
                MOVE "2 4" TO ANNOUNCED-DICE
                MOVE "1 1" TO ROLLED-DICE
                PERFORM CompareDice
            EXPECT DICE-COMPARISON TO BE 1
 
-           TESTCASE 'Is announced dice greater than rolled dice'
+           TESTCASE 'Is announced greater than rolled (both pair)'
                MOVE "2 2" TO ANNOUNCED-DICE
                MOVE "1 1" TO ROLLED-DICE
                PERFORM CompareDice
            EXPECT DICE-COMPARISON TO BE 0
 
-           TESTCASE 'Is announced dice greater than rolled dice'
+           TESTCASE 'Is announced greater than rolled (a=pair)'
                MOVE "2 2" TO ANNOUNCED-DICE
                MOVE "3 1" TO ROLLED-DICE
                PERFORM CompareDice
            EXPECT DICE-COMPARISON TO BE 0
 
-           TESTCASE 'Is announced dice greater than rolled dice'
+           TESTCASE 'Is announced greater than rolled (a=mia)'
                MOVE "1 2" TO ANNOUNCED-DICE
                MOVE "3 1" TO ROLLED-DICE
                PERFORM CompareDice
            EXPECT DICE-COMPARISON TO BE 0
 
-           TESTCASE 'Is announced dice greater than rolled dice'
+           TESTCASE 'Is announced greater than rolled (both mia)'
                MOVE "1 2" TO ANNOUNCED-DICE
                MOVE "2 1" TO ROLLED-DICE
                PERFORM CompareDice
