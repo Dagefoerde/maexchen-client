@@ -18,30 +18,36 @@
            TESTCASE 'Is rolled dice greater than announced dice'
                MOVE "2 4" TO ANNOUNCED-DICE
                MOVE "5 3" TO ROLLED-DICE
+               PERFORM CompareDice
            EXPECT ROLLED-GREATER TO BE TRUE
 
            TESTCASE 'Is rolled dice greater than announced dice'
                MOVE "2 4" TO ANNOUNCED-DICE
                MOVE "1 1" TO ROLLED-DICE
+               PERFORM CompareDice
            EXPECT ROLLED-GREATER TO BE TRUE
 
            TESTCASE 'Is announced dice greater than rolled dice'
                MOVE "2 2" TO ANNOUNCED-DICE
                MOVE "1 1" TO ROLLED-DICE
+               PERFORM CompareDice
            EXPECT ROLLED-GREATER TO BE FALSE
 
            TESTCASE 'Is announced dice greater than rolled dice'
                MOVE "2 2" TO ANNOUNCED-DICE
                MOVE "3 1" TO ROLLED-DICE
+               PERFORM CompareDice
            EXPECT ROLLED-GREATER TO BE FALSE
 
            TESTCASE 'Is announced dice greater than rolled dice'
                MOVE "1 2" TO ANNOUNCED-DICE
                MOVE "3 1" TO ROLLED-DICE
+               PERFORM CompareDice
            EXPECT ROLLED-GREATER TO BE FALSE
 
            TESTCASE 'Is announced dice greater than rolled dice'
                MOVE "1 2" TO ANNOUNCED-DICE
                MOVE "2 1" TO ROLLED-DICE
+               PERFORM CompareDice
            EXPECT ROLLED-GREATER TO BE FALSE
 
