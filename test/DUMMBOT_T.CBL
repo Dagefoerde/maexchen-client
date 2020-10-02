@@ -81,14 +81,15 @@
                PERFORM DecideSee
            EXPECT DECISION-SEE TO BE 1
 
-           TESTCASE 'Decide see if anno=last anno +1 and anno > 63.'
+           TESTCASE 'Decide see if anno=last anno +1 and anno < 63.'
                MOVE "6 3" TO ANNOUNCED-DICE
                MOVE "6 2" TO LAST-ANNOUNCED-DICE
                PERFORM DecideSee
            EXPECT DECISION-SEE TO BE 0
 
-           TESTCASE 'Decide see if anno=last anno +1 and anno > 63.'
+           TESTCASE 'Decide see if anno=last anno+1 and anno pair > 63.'
                MOVE "1 1" TO ANNOUNCED-DICE
                MOVE "6 5" TO LAST-ANNOUNCED-DICE
                PERFORM DecideSee
            EXPECT DECISION-SEE TO BE 1
+
