@@ -57,17 +57,17 @@
            GOBACK
           .
        HANDLE-YOUR-TURN SECTION.
-          PERFORM DecideSee
-          IF WANT-TO-SEE
-            STRING "SEE;" DELIMITED BY SIZE
+           PERFORM DecideSee
+           IF WANT-TO-SEE THEN
+             STRING "SEE;" DELIMITED BY SIZE
                     TOKEN  DELIMITED BY SIZE
-             INTO  MESSAGE-TO-SERVER
-          ELSE
-            STRING "ROLL;" DELIMITED BY SIZE
+             INTO MESSAGE-TO-SERVER
+           ELSE
+             STRING "ROLL;" DELIMITED BY SIZE
                     TOKEN  DELIMITED BY SIZE
-             INTO  MESSAGE-TO-SERVER
-          END-IF
-          EXIT.
+             INTO MESSAGE-TO-SERVER
+           END-IF
+           EXIT.
 
        HANDLE-ROLLED SECTION.
           PERFORM PARSE-SERVER-MESSAGE-ROLLED
