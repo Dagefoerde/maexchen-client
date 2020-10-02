@@ -37,8 +37,8 @@
            WHEN ROLLED
               PERFORM HANDLE-ROLLED
            WHEN OTHER
-               CONTINUE
-      *        DISPLAY "Unknown command: " SERVER-MESSAGE
+      *        CONTINUE
+               DISPLAY "Unknown command: " SERVER-MESSAGE
            END-EVALUATE
            GOBACK
           .
