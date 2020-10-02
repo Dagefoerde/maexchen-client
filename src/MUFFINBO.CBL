@@ -34,11 +34,16 @@
            88 ROLLED-GREATER VALUE 1.
          05 DECISION-SEE PIC 9.
            88 WANT-TO-SEE VALUE 1.
+         05 Pseudo-Random-Number USAGE COMP-2.
        LINKAGE SECTION.
        01 BOT-PARAMETERS.
         COPY DATA.
 
        PROCEDURE DIVISION USING BOT-PARAMETERS.
+
+           MOVE FUNCTION RANDOM(FUNCTION CURRENT-DATE(1:16))
+               TO Pseudo-Random-Number
+
            PERFORM PARSE-SERVER-MESSAGE
            INITIALIZE MESSAGE-TO-SERVER
            EVALUATE TRUE
@@ -191,8 +196,19 @@
            IF NOT ROLLED-GREATER
              MOVE ANNOUNCED-DICE TO DICE-VALUE
              PERFORM AddOneToDice
+             IF DICE-VALUE NOT = "6 6"
+               MOVE FUNCTION RANDOM
+                 TO Pseudo-Random-Number
+               PERFORM RandomAdd
+             END-IF
              MOVE DICE-VALUE TO ROLLED-DICE
            END-IF
+           EXIT.
+
+       RandomAdd SECTION.
+             IF Pseudo-Random-Number > 0.5 THEN
+               PERFORM AddOneToDice
+             END-IF
            EXIT.
 
        DecideSee SECTION.

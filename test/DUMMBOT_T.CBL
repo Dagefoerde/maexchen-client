@@ -104,3 +104,15 @@
                PERFORM DecideSee
            EXPECT DECISION-SEE TO BE 1
 
+           TESTCASE 'Random Add. Random > 0.5'
+               MOVE 0.6 TO Pseudo-Random-Number
+               MOVE "1 1" TO DICE-VALUE
+               PERFORM RandomAdd
+           EXPECT DICE-VALUE TO BE "2 2"
+
+           TESTCASE 'Random Add. Random < 0.5'
+               MOVE 0.3 TO Pseudo-Random-Number
+               MOVE "1 1" TO DICE-VALUE
+               PERFORM RandomAdd
+           EXPECT DICE-VALUE TO BE "1 1"
+
