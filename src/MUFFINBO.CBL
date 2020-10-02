@@ -173,7 +173,7 @@
        DecideAnnounce SECTION.
            PERFORM CompareDice
            IF NOT ROLLED-GREATER
-             MOVE ROLLED-DICE TO DICE-VALUE
+             MOVE ANNOUNCED-DICE TO DICE-VALUE
              PERFORM AddOneToDice
              MOVE DICE-VALUE TO ROLLED-DICE
            END-IF
