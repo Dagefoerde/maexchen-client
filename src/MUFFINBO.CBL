@@ -205,7 +205,7 @@
            
            IF ANNOUNCED-DICE > 6 
                SET WANT-TO-SEE TO TRUE
-               EXIT LINKAGE SECTION.
+               EXIT SECTION.
            END-IF
 
            IF NOT ROLLED-GREATER
