@@ -150,7 +150,7 @@
            EXIT.
 
        CompareDice SECTION.
-           IF ANNOUNCED-DICE EQUAL "   "
+           IF ANNOUNCED-DICE EQUAL "0 0"
                SET ROLLED-GREATER TO TRUE
                EXIT SECTION
            END-IF
@@ -203,7 +203,8 @@
            IF NOT ROLLED-GREATER
              MOVE ANNOUNCED-DICE TO DICE-VALUE
              PERFORM AddOneToDice
-             IF DICE-VALUE NOT = "6 6"
+             IF DICE-1 IN DICE-VALUE NOT = 6 AND 
+                 DICE-2 IN DICE-VALUE NOT = 6 
                MOVE FUNCTION RANDOM
                  TO Pseudo-Random-Number
                PERFORM RandomAdd
@@ -245,7 +246,7 @@
 
            Perform CompareDice
 
-           IF DICE-1 IN LAST-ANNOUNCED-DICE IS NUMERIC
+           IF DICE-1 IN LAST-ANNOUNCED-DICE > 0
                SET DICE-1 IN DICE-VALUE TO 
                    DICE-1 IN LAST-ANNOUNCED-DICE
                SET DICE-2 IN DICE-VALUE TO

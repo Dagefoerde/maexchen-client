@@ -117,13 +117,13 @@
            EXPECT DICE-VALUE TO BE "1 1"
 
            TESTCASE 'Initial Roll'
-               MOVE "   " TO ANNOUNCED-DICE
+               MOVE "0 0" TO ANNOUNCED-DICE
                MOVE "3 1" TO ROLLED-DICE
                PERFORM DecideAnnounce
            EXPECT ROLLED-DICE TO BE "3 1"
 
            TESTCASE 'Compare empty Roll'
-               MOVE "   " TO ANNOUNCED-DICE
+               MOVE "0 0" TO ANNOUNCED-DICE
                MOVE "3 1" TO ROLLED-DICE
                PERFORM CompareDice
            EXPECT DICE-COMPARISON TO BE 1
