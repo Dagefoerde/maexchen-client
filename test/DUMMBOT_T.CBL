@@ -1,5 +1,7 @@
-           TESTSUITE 'Test OHCE Kata'
+           TESTSUITE 'Test MAEXCHENBOT'
 
-           TESTCASE 'Reversing works (5 char)'
-           EXPECT 1 TO BE "1"
+           TESTCASE 'Add 1 to current dice value'
+               MOVE 32 to DICE-VALUE
+               PERFORM AddOneToDice
+           EXPECT DICE-VALUE TO BE 41
          
