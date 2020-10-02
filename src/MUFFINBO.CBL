@@ -202,6 +202,11 @@
            SET DICE-2 IN ROLLED-DICE TO 6
 
            Perform CompareDice
+           
+           IF ANNOUNCED-DICE > 6 
+               SET WANT-TO-SEE TO TRUE
+               EXIT LINKAGE SECTION.
+           END-IF
 
            IF NOT ROLLED-GREATER
                SET WANT-TO-SEE TO TRUE
