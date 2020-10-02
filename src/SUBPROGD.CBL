@@ -1,0 +1,17 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. SUBPROGD.
+       ENVIRONMENT DIVISION.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01  BOT-PARAMETERS.
+           05 SERVER-MESSAGE PIC X(80).
+           05 MESSAGE-TO-SERVER PIC X(80).
+       PROCEDURE DIVISION.
+           MOVE 'Test' TO SERVER-MESSAGE
+           MOVE 'Test2' TO MESSAGE-TO-SERVER
+           CALL 'DUMMBOT' USING
+               BY REFERENCE BOT-PARAMETERS
+           END-CALL    
+           .
+       9999-END.
+           .
