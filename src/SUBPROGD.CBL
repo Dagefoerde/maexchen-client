@@ -9,7 +9,7 @@
        PROCEDURE DIVISION.
            MOVE 'Test' TO SERVER-MESSAGE
            MOVE 'Test2' TO MESSAGE-TO-SERVER
-           CALL 'DUMMBOT' USING
+           CALL 'MUFFINBO' USING
                BY REFERENCE BOT-PARAMETERS
            END-CALL    
            .

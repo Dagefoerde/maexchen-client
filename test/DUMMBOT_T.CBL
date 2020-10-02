@@ -1,7 +1,7 @@
            TESTSUITE 'Test MAEXCHENBOT'
 
            TESTCASE 'Add 1 to current dice value'
-               MOVE 32 to DICE-VALUE
-               PERFORM AddOneToDice
-           EXPECT DICE-VALUE TO BE 41
+               MOVE "3 2" to ANNOUNCED-DICE
+      *        PERFORM AddOneToDice
+           EXPECT ANNOUNCED-DICE TO BE 41
          
