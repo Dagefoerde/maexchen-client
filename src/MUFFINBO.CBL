@@ -77,6 +77,7 @@
        HANDLE-ROLLED SECTION.
           PERFORM PARSE-SERVER-MESSAGE-ROLLED
           PERFORM DecideAnnounce
+          PERFORM SwapRolledDice
           STRING "ANNOUNCE;" DELIMITED BY SIZE
                  ROLLED-DICE       DELIMITED BY SIZE
                  ";"         DELIMITED BY SIZE
@@ -255,6 +256,13 @@
            END-IF
            
 
+           EXIT.
+
+
+       SwapRolledDice SECTION.
+           MOVE DICE-1 IN ROLLED-DICE  TO ONE-DIE
+           MOVE DICE-2 IN ROLLED-DICE  TO DICE-1 IN ROLLED-DICE
+           MOVE ONE-DIE TO DICE-2 IN ROLLED-DICE
            EXIT.
 
        END PROGRAM MUFFINBO.

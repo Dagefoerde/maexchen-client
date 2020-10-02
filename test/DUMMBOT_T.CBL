@@ -130,12 +130,12 @@
 
            TESTCASE 'Unsort'
                MOVE "3 1" TO ROLLED-DICE
-               PERFORM UnsortRolledDice
+               PERFORM SwapRolledDice
            EXPECT ROLLED-DICE TO BE "1 3"
 
            TESTCASE 'Unsort'
                MOVE "6 3" TO ROLLED-DICE
-               PERFORM UnsortRolledDice
+               PERFORM SwapRolledDice
            EXPECT ROLLED-DICE TO BE "3 6"
 
 
