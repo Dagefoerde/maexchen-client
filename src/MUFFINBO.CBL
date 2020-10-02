@@ -93,6 +93,28 @@
 
        AddOneToDice SECTION.
            PERFORM SortDice.
+
+           IF DICE-1 IN DICE-VALUE = DICE-2 IN DICE-VALUE
+      *      Pasch
+             ADD 1 TO DICE-1 IN DICE-VALUE
+             ADD 1 TO DICE-2 IN DICE-VALUE
+             IF DICE-1 IN DICE-VALUE = 7
+      *        Mäxchen
+               SET DICE-1 IN DICE-VALUE TO 2
+               SET DICE-2 IN DICE-VALUE TO 1
+             END-IF
+           ELSE
+      *      Kein Pasch
+             ADD 1 TO DICE-2 IN DICE-VALUE
+      *      ggf. Overflow
+             IF DICE-2 IN DICE-VALUE = DICE-1 IN DICE-VALUE
+               SET DICE-2 IN DICE-VALUE TO 1
+               ADD 1 TO DICE-1 IN DICE-VALUE
+               IF DICE-1 IN DICE-VALUE = 7
+                   SET DICE-1 IN DICE-VALUE TO 1
+               END-IF
+             END-IF
+           END-IF
            
            EXIT.
 
