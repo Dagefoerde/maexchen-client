@@ -94,7 +94,7 @@
            EXPECT DECISION-SEE TO BE 1
 
            TESTCASE 'Decide see if last anno empty and anno > 63.'
-               MOVE "6 3" TO ANNOUNCED-DICE
+               MOVE "6 5" TO ANNOUNCED-DICE
                MOVE "   " TO LAST-ANNOUNCED-DICE
                PERFORM DecideSee
            EXPECT DECISION-SEE TO BE 0

@@ -203,7 +203,7 @@
 
            Perform CompareDice
            
-           IF ANNOUNCED-DICE > 6 
+           IF DICE-1 IN ANNOUNCED-DICE > 6
                SET WANT-TO-SEE TO TRUE
                EXIT SECTION.
            END-IF
@@ -213,6 +213,24 @@
                EXIT SECTION
            END-IF
 
+           SET DICE-1 IN ROLLED-DICE TO 6
+           SET DICE-2 IN ROLLED-DICE TO 4
+
+           Perform CompareDice
+
+           IF DICE-1 IN LAST-ANNOUNCED-DICE IS NUMERIC
+               SET DICE-1 IN DICE-VALUE TO 
+                   DICE-1 IN LAST-ANNOUNCED-DICE
+               SET DICE-2 IN DICE-VALUE TO
+                   DICE-2 IN LAST-ANNOUNCED-DICE
+               PERFORM AddOneToDice
+
+               IF NOT ROLLED-GREATER AND
+                 DICE-VALUE = ANNOUNCED-DICE
+                   SET WANT-TO-SEE TO TRUE
+                   EXIT SECTION
+               END-IF
+           END-IF
            
 
            EXIT.
