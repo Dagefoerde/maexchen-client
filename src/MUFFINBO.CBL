@@ -9,6 +9,10 @@
             07 DICE-1 PIC 9.
             07 FILLER PIC X.
             07 DICE-2 PIC 9.
+          05   LAST-ANNOUNCED-DICE.
+            07 DICE-1 PIC 9.
+            07 FILLER PIC X.
+            07 DICE-2 PIC 9.
        01 CURRENT-TURN.
           05 COMMAND PIC X(32).
              88 ROUND-STARTING VALUE "ROUND STARTING".
@@ -53,9 +57,16 @@
            GOBACK
           .
        HANDLE-YOUR-TURN SECTION.
-          STRING "ROLL;" DELIMITED BY SIZE
-                  TOKEN  DELIMITED BY SIZE
-           INTO  MESSAGE-TO-SERVER
+          PERFORM DecideSee
+          IF WANT-TO-SEE
+            STRING "SEE;" DELIMITED BY SIZE
+                    TOKEN  DELIMITED BY SIZE
+             INTO  MESSAGE-TO-SERVER
+          ELSE
+            STRING "ROLL;" DELIMITED BY SIZE
+                    TOKEN  DELIMITED BY SIZE
+             INTO  MESSAGE-TO-SERVER
+          END-IF
           EXIT.
 
        HANDLE-ROLLED SECTION.
@@ -69,12 +80,14 @@
           EXIT.
 
        HANDLE-ROUND-STARTING SECTION.
+          INITIALIZE LAST-ANNOUNCED-DICE
           STRING "JOIN;" DELIMITED BY SIZE
                   TOKEN  DELIMITED BY SIZE
            INTO  MESSAGE-TO-SERVER
           EXIT.
 
        HANDLE-ANNOUNCED SECTION.
+          MOVE ANNOUNCED-DICE TO LAST-ANNOUNCED-DICE
           UNSTRING SERVER-MESSAGE DELIMITED BY ';'
               INTO COMMAND
                    LAST-PLAYER
@@ -192,7 +205,11 @@
 
            IF NOT ROLLED-GREATER
                SET WANT-TO-SEE TO TRUE
+               EXIT SECTION
            END-IF
+
+           
+
            EXIT.
 
        END PROGRAM MUFFINBO.
