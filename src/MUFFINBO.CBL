@@ -134,10 +134,14 @@
            PERFORM SortDice
            MOVE DICE-VALUE TO ROLLED-DICE
 
-           INITIALIZE ROLLED-GREATER
+           INITIALIZE DICE-COMPARISON
 
            IF DICE-1 IN ROLLED-DICE = 2 AND DICE-2 IN ROLLED-DICE = 1
                SET ROLLED-GREATER TO TRUE
+               IF DICE-1 IN ANNOUNCED-DICE = 2 AND 
+                                            DICE-2 IN ANNOUNCED-DICE = 1
+                 INITIALIZE DICE-COMPARISON
+               END-IF
            ELSE
              IF DICE-1 IN ROLLED-DICE = DICE-2 IN ROLLED-DICE
                 AND DICE-1 IN ANNOUNCED-DICE NOT = DICE-2 IN
