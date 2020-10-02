@@ -70,16 +70,7 @@
                PERFORM CompareDice
            EXPECT DICE-COMPARISON TO BE 1
 
-           TESTCASE 'Decide see in case of 6 pair and rolled lower.'
+           TESTCASE 'Decide see in case of 6 pair.'
                MOVE "6 6" TO ANNOUNCED-DICE
-               MOVE "2 3" TO ROLLED-DICE
                PERFORM DecideSee
            EXPECT DECISION-SEE TO BE 1
-
-           TESTCASE 'Decide see in case of 6 pair and rolled higher.'
-               MOVE "6 6" TO ANNOUNCED-DICE
-               MOVE "1 2" TO ROLLED-DICE
-               PERFORM DecideSee
-           EXPECT DECISION-SEE TO BE 0
-
-
