@@ -67,5 +67,6 @@
                MOVE "2 2" TO ANNOUNCED-DICE
                MOVE "2 3" TO ROLLED-DICE
                PERFORM DecideAnnounce
+               PERFORM CompareDice
            EXPECT DICE-COMPARISON TO BE 1
 
