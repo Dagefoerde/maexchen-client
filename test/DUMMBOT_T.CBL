@@ -128,3 +128,14 @@
                PERFORM CompareDice
            EXPECT DICE-COMPARISON TO BE 1
 
+           TESTCASE 'Unsort'
+               MOVE "3 1" TO ROLLED-DICE
+               PERFORM UnsortRolledDice
+           EXPECT ROLLED-DICE TO BE "1 3"
+
+           TESTCASE 'Unsort'
+               MOVE "6 3" TO ROLLED-DICE
+               PERFORM UnsortRolledDice
+           EXPECT ROLLED-DICE TO BE "3 6"
+
+
