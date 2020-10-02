@@ -26,6 +26,8 @@
             07 FILLER PIC X.
             07 DICE-2 PIC 9.
          05 ONE-DIE PIC 9.
+         05 DICE-COMPARISON PIC 9.
+           88 ROLLED-GREATER VALUE 1.
        LINKAGE SECTION.
        01 BOT-PARAMETERS.
         COPY DATA.
@@ -92,8 +94,6 @@
            EXIT.
 
        AddOneToDice SECTION.
-           PERFORM SortDice.
-
            IF DICE-1 IN DICE-VALUE = DICE-2 IN DICE-VALUE
       *      Pasch
              ADD 1 TO DICE-1 IN DICE-VALUE
@@ -123,6 +123,41 @@
                MOVE DICE-1 IN DICE-VALUE  TO ONE-DIE
                MOVE DICE-2 IN DICE-VALUE  TO DICE-1 IN DICE-VALUE 
                MOVE ONE-DIE TO DICE-2 IN DICE-VALUE 
+           END-IF
+           EXIT.
+
+       CompareDice SECTION.
+           MOVE ANNOUNCED-DICE TO DICE-VALUE
+           PERFORM SortDice
+           MOVE DICE-VALUE TO ANNOUNCED-DICE
+           MOVE ROLLED-DICE TO DICE-VALUE
+           PERFORM SortDice
+           MOVE DICE-VALUE TO ROLLED-DICE
+
+           INITIALIZE ROLLED-GREATER
+
+           IF DICE-1 IN ROLLED-DICE = 2 AND DICE-2 IN ROLLED-DICE = 1
+               SET ROLLED-GREATER TO TRUE
+           ELSE
+             IF DICE-1 IN ROLLED-DICE = DICE-2 IN ROLLED-DICE
+                AND DICE-1 IN ANNOUNCED-DICE NOT = DICE-2 IN
+                                                          ANNOUNCED-DICE
+               SET ROLLED-GREATER TO TRUE
+             ELSE 
+               IF DICE-1 IN ROLLED-DICE = DICE-2 IN ROLLED-DICE
+                  AND DICE-1 IN ANNOUNCED-DICE < DICE-1 IN ROLLED-DICE
+                 SET ROLLED-GREATER TO TRUE
+               ELSE
+                 IF DICE-1 IN ANNOUNCED-DICE < DICE-1 IN ROLLED-DICE
+                   SET ROLLED-GREATER TO TRUE
+                 ELSE
+                   IF DICE-1 IN ANNOUNCED-DICE = DICE-1 IN ROLLED-DICE
+                    AND DICE-2 IN ANNOUNCED-DICE < DICE-2 IN ROLLED-DICE
+                     SET ROLLED-GREATER TO TRUE          
+                   END-IF
+                 END-IF
+               END-IF
+             END-IF
            END-IF
            EXIT.
 
