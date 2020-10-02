@@ -149,6 +149,11 @@
            EXIT.
 
        CompareDice SECTION.
+           IF ANNOUNCED-DICE = "   "
+               SET ROLLED-GREATER TO TRUE
+               EXIT SECTION
+           END-IF
+
            MOVE ANNOUNCED-DICE TO DICE-VALUE
            PERFORM SortDice
            MOVE DICE-VALUE TO ANNOUNCED-DICE
@@ -157,11 +162,6 @@
            MOVE DICE-VALUE TO ROLLED-DICE
 
            INITIALIZE DICE-COMPARISON
-
-           IF ANNOUNCED-DICE = "   "
-               SET ROLLED-GREATER TO TRUE
-               EXIT SECTION
-           END-IF
 
            IF DICE-1 IN ANNOUNCED-DICE = 2 AND 
                                             DICE-2 IN ANNOUNCED-DICE = 1
