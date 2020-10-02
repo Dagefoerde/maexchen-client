@@ -221,7 +221,7 @@
            
            IF DICE-1 IN ANNOUNCED-DICE > 6
                SET WANT-TO-SEE TO TRUE
-               EXIT SECTION.
+               EXIT SECTION
            END-IF
 
            IF NOT ROLLED-GREATER
