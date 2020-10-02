@@ -99,3 +99,8 @@
                PERFORM DecideSee
            EXPECT DECISION-SEE TO BE 0
 
+           TESTCASE 'Decide see if first die >=7.'
+               MOVE "7 3" TO ANNOUNCED-DICE
+               PERFORM DecideSee
+           EXPECT DECISION-SEE TO BE 1
+
