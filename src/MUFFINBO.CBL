@@ -77,7 +77,7 @@
        HANDLE-ROLLED SECTION.
           PERFORM PARSE-SERVER-MESSAGE-ROLLED
           PERFORM DecideAnnounce
-          PERFORM SwapRolledDice
+      *   PERFORM SwapRolledDice
           STRING "ANNOUNCE;" DELIMITED BY SIZE
                  ROLLED-DICE       DELIMITED BY SIZE
                  ";"         DELIMITED BY SIZE
@@ -150,7 +150,8 @@
            EXIT.
 
        CompareDice SECTION.
-           IF ANNOUNCED-DICE EQUAL "0 0"
+           IF DICE-1 IN ANNOUNCED-DICE = 0
+               AND DICE-2 IN ANNOUNCED-DICE = 0
                SET ROLLED-GREATER TO TRUE
                EXIT SECTION
            END-IF
@@ -199,6 +200,13 @@
            EXIT.
 
        DecideAnnounce SECTION.
+
+           IF DICE-1 IN ANNOUNCED-DICE = 0
+               AND DICE-2 IN ANNOUNCED-DICE = 0
+               DISPLAY "XXXXXXXXXXXXXXXXXXXXX Start of round XXXXXXXXXX"
+               EXIT SECTION
+           END-IF
+
            PERFORM CompareDice
            IF NOT ROLLED-GREATER
              MOVE ANNOUNCED-DICE TO DICE-VALUE
