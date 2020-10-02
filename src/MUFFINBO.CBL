@@ -150,7 +150,7 @@
            EXIT.
 
        CompareDice SECTION.
-           IF ANNOUNCED-DICE = "   "
+           IF ANNOUNCED-DICE EQUAL "   "
                SET ROLLED-GREATER TO TRUE
                EXIT SECTION
            END-IF
@@ -213,16 +213,20 @@
            EXIT.
 
        RandomAdd SECTION.
-             IF Pseudo-Random-Number > 0.5 THEN
+             IF Pseudo-Random-Number > 0.3 THEN
                PERFORM AddOneToDice
              END-IF
            EXIT.
 
        DecideSee SECTION.
            INITIALIZE DECISION-SEE
+
+           IF LAST-PLAYER EQUAL "JANLUKAS"
+               EXIT SECTION
+           END-IF
            
-           SET DICE-1 IN ROLLED-DICE TO 6
-           SET DICE-2 IN ROLLED-DICE TO 6
+           SET DICE-1 IN ROLLED-DICE TO 2
+           SET DICE-2 IN ROLLED-DICE TO 2
 
            Perform CompareDice
            
