@@ -136,12 +136,14 @@
 
            INITIALIZE DICE-COMPARISON
 
+           IF DICE-1 IN ANNOUNCED-DICE = 2 AND 
+                                            DICE-2 IN ANNOUNCED-DICE = 1
+             EXIT SECTION
+           END-IF
+
            IF DICE-1 IN ROLLED-DICE = 2 AND DICE-2 IN ROLLED-DICE = 1
                SET ROLLED-GREATER TO TRUE
-               IF DICE-1 IN ANNOUNCED-DICE = 2 AND 
-                                            DICE-2 IN ANNOUNCED-DICE = 1
-                 INITIALIZE DICE-COMPARISON
-               END-IF
+               
            ELSE
              IF DICE-1 IN ROLLED-DICE = DICE-2 IN ROLLED-DICE
                 AND DICE-1 IN ANNOUNCED-DICE NOT = DICE-2 IN
@@ -152,12 +154,15 @@
                   AND DICE-1 IN ANNOUNCED-DICE < DICE-1 IN ROLLED-DICE
                  SET ROLLED-GREATER TO TRUE
                ELSE
-                 IF DICE-1 IN ANNOUNCED-DICE < DICE-1 IN ROLLED-DICE
-                   SET ROLLED-GREATER TO TRUE
-                 ELSE
-                   IF DICE-1 IN ANNOUNCED-DICE = DICE-1 IN ROLLED-DICE
+                 IF DICE-1 IN ANNOUNCED-DICE NOT = DICE-2
+                                                       IN ANNOUNCED-DICE
+                   IF DICE-1 IN ANNOUNCED-DICE < DICE-1 IN ROLLED-DICE
+                     SET ROLLED-GREATER TO TRUE
+                   ELSE
+                     IF DICE-1 IN ANNOUNCED-DICE = DICE-1 IN ROLLED-DICE
                     AND DICE-2 IN ANNOUNCED-DICE < DICE-2 IN ROLLED-DICE
                      SET ROLLED-GREATER TO TRUE          
+                     END-IF
                    END-IF
                  END-IF
                END-IF
