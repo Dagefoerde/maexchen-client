@@ -51,3 +51,15 @@
                PERFORM CompareDice
            EXPECT DICE-COMPARISON TO BE 0
 
+           TESTCASE 'Decide announce rolled higher'
+               MOVE "1 5" TO ANNOUNCED-DICE
+               MOVE "2 6" TO ROLLED-DICE
+               PERFORM DecideAnnounce
+           EXPECT DIVE-VALUE TO BE "6 2"
+
+           TESTCASE 'Decide announce rolled lower'
+               MOVE "1 5" TO ANNOUNCED-DICE
+               MOVE "2 3" TO ROLLED-DICE
+               PERFORM DecideAnnounce
+           EXPECT DIVE-VALUE NOT TO BE "3 2"
+
