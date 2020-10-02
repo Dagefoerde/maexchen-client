@@ -86,6 +86,7 @@
 
        HANDLE-ROUND-STARTING SECTION.
           INITIALIZE LAST-ANNOUNCED-DICE
+          INITIALIZE ANNOUNCED-DICE
           STRING "JOIN;" DELIMITED BY SIZE
                   TOKEN  DELIMITED BY SIZE
            INTO  MESSAGE-TO-SERVER
@@ -156,6 +157,11 @@
            MOVE DICE-VALUE TO ROLLED-DICE
 
            INITIALIZE DICE-COMPARISON
+
+           IF ANNOUNCED-DICE = "   "
+               SET ROLLED-GREATER TO TRUE
+               EXIT SECTION
+           END-IF
 
            IF DICE-1 IN ANNOUNCED-DICE = 2 AND 
                                             DICE-2 IN ANNOUNCED-DICE = 1
