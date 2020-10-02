@@ -13,5 +13,5 @@
            TESTCASE 'Sort dice value'
                MOVE "1 4" to DICE-VALUE
                PERFORM SortDice
-           EXPECT DICE-VALUE TO BE "1 4"
+           EXPECT DICE-VALUE TO BE "4 1"
          
