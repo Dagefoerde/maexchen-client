@@ -20,6 +20,12 @@
             07 DICE-1 PIC 9.
             07 FILLER PIC X.
             07 DICE-2 PIC 9.
+       01  TEMPS.
+         05 DICE-VALUE.
+            07 DICE-1 PIC 9.
+            07 FILLER PIC X.
+            07 DICE-2 PIC 9.
+         05 ONE-DIE PIC 9.
        LINKAGE SECTION.
        01 BOT-PARAMETERS.
         COPY DATA.
@@ -84,5 +90,19 @@
                  ROLLED-DICE
                  TOKEN
            EXIT.
+
+       AddOneToDice SECTION.
+           PERFORM SortDice.
+           
+           EXIT.
+
+       SortDice SECTION.
+           IF DICE-1 IN DICE-VALUE < DICE-2 IN DICE-VALUE
+               MOVE DICE-1 TO ONE-DIE
+               MOVE DICE-2 TO DICE-1
+               MOVE ONE-DIE TO DICE-2
+           END-IF
+           EXIT.
+
 
        END PROGRAM MUFFINBO.
